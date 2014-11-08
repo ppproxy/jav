@@ -60,11 +60,11 @@ function start(num, done)
 
                     taskList.push(function(done)
                     {
-                        if( fs.existsSync('./public/images/avimage/' + doc.code+'.jpg'  )  ) ){
+                        if( fs.existsSync('./public/images/avimage/' + doc.code+'.jpg') ){
                             // console.log('-----exists', doc.code)
                             return done(true)
                         }
-                        
+
                         downloadFile('./public/images/avimage/', doc.poster, doc.code, function (err, name) 
                         {
                             if( !err )
