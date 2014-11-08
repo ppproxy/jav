@@ -43,7 +43,7 @@ function start(num, done)
     //     return start(++index)
     // return
     //image_exists:true date: { $gt: ' 2014-10-01' }
-    Movie.dbColl.find({}).sort({date: -1}).limit(100).skip(num * 100).toArray(function(err, docs)
+    Movie.dbColl.find({ image_exists }).sort({date: -1}).limit(100).skip(num * 100).toArray(function(err, docs)
     // Movie.dbColl.find({ _id: {$in: list}}).sort({code: -1}).limit(30).skip(num * 30).toArray(function(err, docs)
     {
         if(!docs.length)
@@ -60,25 +60,27 @@ function start(num, done)
 
                     taskList.push(function(done)
                     {
-                        if( fs.existsSync('./public/images/avimage/' + doc.code+'.jpg'  ) || fs.existsSync('./public/images/avimage2/' + doc.code+'.jpg'  ) ){
-                            // console.log('-----exists', doc.code)
-                            return done(true)
-                        }
+                        // if( fs.existsSync('./public/images/avimage/' + doc.code+'.jpg'  ) || fs.existsSync('./public/images/avimage2/' + doc.code+'.jpg'  ) ){
+                        //     // console.log('-----exists', doc.code)
+                        //     return done(true)
+                        // }
+                        
+                        downloadFile('./public/images/avimage2/', doc.poster, doc.code, function (err, name) 
+                        {
+                            if( !err )
+                                Movie.updateById(doc._id, { image_exists: true })
+                            else if( err === 1 )
+                                Movie.updateById(doc._id, { image_exists: 'min' })
+                            else
+                                Movie.updateById(doc._id, { image_exists: 'err' })
 
-                        downloadFile('./public/images/avimage2/', doc.poster, doc.code, function (name) {
-                            // console.log('done', name)
                             done(!name)
                         });
                     })
 
                     async.series(taskList, function(err){
-                        if( !err)
-                            Movie.updateById(doc._id, { image_exists: true })
-                        else
-                            Movie.updateById(doc._id, { image_exists: 'err' })
                         done()
                     })
-                // })
             })
         })
         
@@ -122,10 +124,10 @@ function downloadFile(download_path, file_url, fileName, callback)
                     console.log('size-----', download_path + name)
                     console.log('size-----', file_url)
                     fs.unlink(download_path + "\\" + name)
-                    return callback()
+                    return callback(1)
                 }
 
-                callback(name)
+                callback(null, name)
             },10)
             //console.log('download success');
         });
@@ -140,6 +142,6 @@ function downloadFile(download_path, file_url, fileName, callback)
         } catch (e) {
             console.log( e)
         }
-        callback()
+        callback(e)
     });
 }
