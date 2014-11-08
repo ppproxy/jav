@@ -67,7 +67,7 @@ function start(num, done)
 
                         downloadFile('./public/images/avimage/', doc.poster, doc.code, function (err, name) 
                         {
-                            consle.log(name)
+                            console.log(name)
                             if( !err )
                                 Movie.updateById(doc._id, { image_exists: true })
                             else if( err === 1 )
