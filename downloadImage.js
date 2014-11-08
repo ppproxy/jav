@@ -127,7 +127,7 @@ function downloadFile(download_path, file_url, fileName, callback)
                         return callback(1)
                     }
                 }
-                catch{
+                catch(e){
                     fs.unlink(download_path + name)
                 }
 
