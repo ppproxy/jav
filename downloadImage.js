@@ -60,12 +60,12 @@ function start(num, done)
 
                     taskList.push(function(done)
                     {
-                        // if( fs.existsSync('./public/images/avimage/' + doc.code+'.jpg'  ) || fs.existsSync('./public/images/avimage2/' + doc.code+'.jpg'  ) ){
-                        //     // console.log('-----exists', doc.code)
-                        //     return done(true)
-                        // }
+                        if( fs.existsSync('./public/images/avimage/' + doc.code+'.jpg'  )  ) ){
+                            // console.log('-----exists', doc.code)
+                            return done(true)
+                        }
                         
-                        downloadFile('./public/images/avimage2/', doc.poster, doc.code, function (err, name) 
+                        downloadFile('./public/images/avimage/', doc.poster, doc.code, function (err, name) 
                         {
                             if( !err )
                                 Movie.updateById(doc._id, { image_exists: true })
