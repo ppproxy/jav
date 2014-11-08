@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BT Library</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/templates/freelancer/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/templates/freelancer/css/freelancer.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="/templates/freelancer/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- IE8 support for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+   
+
+<style type="text/css">
+    .portfolio-link{
+        width: 360px;
+        height: 260px;
+    }
+    .navbar-fixed-top.navbar-shrink {
+        padding: 0px 0;
+    }
+</style>
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid"  style="width:90%">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="text-transform:none">BT Library</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="text-transform:none">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="page-scroll">
+                         <div class="form-group col-xs-12 " style="margin-bottom: 0px;margin-top:18px;">
+                            <input style="height:20px" id="search" class="form-control" type="text" name="search" value="<%=search|| ''%>" placeholder="沖田杏梨">
+                        </div>
+                    </li>
+
+                    <li class="page-scroll">
+                        <div class="form-group col-xs-12" style="margin-bottom: 0px;margin-top:16px;padding-left: 0px;">
+                            <a id="search_btn" style="padding: 3px 15px;font-size:15px" class="btn btn-lg btn-success">Search</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                      <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">类别<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="/search/人妻/" >人妻</a>
+                        </li>
+                        <li>
+                          <a href="/search/巨乳/" >巨乳</a>
+                        </li>
+                        <li>
+                          <a href="/search/母乳/" >母乳</a>
+                        </li>
+                        <li>
+                          <a href="/search/教師/" >教師</a>
+                        </li>
+                        <li>
+                          <a href="/search/母/" >母と息子</a>
+                        </li>
+                        <li>
+                          <a href="/search/着衣巨乳/" >着衣巨乳</a>
+                        </li>
+                        <li>
+                          <a href="/search/家政婦/" >家政婦</a>
+                        </li>
+                        <li>
+                          <a href="/search/腿|脚/" >美腿</a>
+                        </li>
+                        <li>
+                          <a href="/search/高中|水手服|校服/" >女子高生</a>
+                        </li>
+                        <li>
+                          <a href="/search/酔/" >酔酒</a>
+                        </li>
+                        <li>
+                          <a href="/search/淫語/" >淫語</a>
+                        </li>
+                        <li>
+                          <a href="/search/新人/" >新人</a>
+                        </li>
+                        <li>
+                          <a href="/search/母乳/" >母乳</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">种类<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="/" >所有</a>
+                        </li>
+                        <li>
+                          <a href="/download/" >下载</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="portfolio">
+        <div class="container-fluid" style="width:95%">
+            <br>
+            <br>
+            <div class="row">
+
+                <% docs.forEach(function(doc){ %>
+                    <div class="col-sm-4 portfolio-item" style="min-height:440px">
+                        <div style="height:40px">
+                            <!-- <form method="POST" class="deleteMovie" style="float:left;font-size:5px"  action="/deleteMovie/<%=doc._id%>">
+                                <input type="submit" value="delete"style="height:20px">
+                            </form> -->
+                            <%if(doc.seeds){%>
+                                <span style = "color:red"><%=doc.title%>#<span>
+                            <%}else{%>
+                                <%=doc.title%>#
+                            <%}%>
+
+                          </div>
+                        <a href="#portfolioModal" class="portfolio-link" data-toggle="modal" style="height:100%;width:100%;max-width:none">
+                            <input type="hidden" name="id" value="<%=doc._id%>">
+                            <div class="caption" style="background: rgba(24,188,156,.3);">
+                                <div class="caption-content">
+                                    <i class="fa fa-search-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <!-- <img src="<%=doc.poster%>" class="img-responsive" style="max-width:100%;"  alt="" />-->
+                           <img src="<%='/images/avimage/'+doc.code+'.jpg'%>" class="img-responsive" style="max-width:100%;"  alt="" /> 
+                            <input type="hidden" class="download" value="<%=doc.poster%>"> 
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    <ul class="pagination" style="position: fixed;right: 0px;top: 100px;">
+        <li>
+            <a style="width: 50px;margin-left: -1px; border-bottom-left-radius: 0px; border-top-left-radius: 0px; " href="#">▲</a>
+        </li> 
+        <% for(var i=begin; i<=end ;i++){ %>
+            <li style="display: inherit;" <% if(page === i){ %>class="active" <% } %>>
+                <a style="padding:10px 0px;width: 50px;text-align: center;" href="<%= i%>"><%=i%></a>
+            </li>
+        <% } %>
+        <li>
+            <a href="#" style="width: 50px;margin-left: -1px; border-bottom-left-radius: 0px; border-top-left-radius: 0px; ">▼</a>
+        </li>
+     </ul>
+    </section>
+
+    <div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content" style="padding-top:0px">
+            <div class="close-modal" data-dismiss="modal" style="position: fixed; z-index: 100;">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-11 col-lg-offset-1">
+                        <div class="modal-body" >
+                            <img class="col-sm-6" src="/templates/freelancer/img/portfolio/ace.png" id="portfolioModal_image"  class="img-responsive img-centered" alt="">
+                            
+                            <div class="col-sm-4">
+                                
+                            <form  method="POST" role="form" id="updateMovie" class="form-horizontal" action="/updateMovie/" style="">  
+                                
+                                <input type="hidden" name="_id" >
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">name</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="name" value="" placeholder="title">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">code</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="code" value="" placeholder="code">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">cast</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="cast" value="" placeholder="cast">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">date</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="date" value="" placeholder="date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">size</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="size" value="" placeholder="size">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">tag</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="tag" value="" placeholder="tag">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">produce</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="produce" value="" placeholder="produce">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">publisher</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="publisher" value="" placeholder="publisher">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                                <a type="button" id="download" class="btn btn-default"  target="_blank"><i class="fa fa-download" ></i> Download</a>
+                            </form>
+                            </div>
+                                <div style="clear:left"></div>
+
+                            <div class='col-sm-10' >
+                                <table class="table" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>title</th>
+                                            <th>site</th>
+                                            <th>category</th>
+                                            <th>download</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="movie-torrent">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class='movie-images col-sm-10' >
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <textarea id="updateFormTemplate">
+        
+    </textarea>
+    <footer class="text-center">
+  
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; 2014 - junjun16818@hotmail.com
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+
+    <script src="/templates/freelancer/js/jquery-1.10.2.js"></script>
+    <script src="/templates/freelancer/js/bootstrap.min.js"></script>
+    <script src="/templates/freelancer/js/classie.js"></script>
+    <script src="/templates/freelancer/js/cbpAnimatedHeader.js"></script>
+    <script src="/templates/freelancer/js/freelancer.js"></script>
+
+    <script type="text/javascript">
+        $.fn.serializeJson=function(){  
+            var serializeObj={};  
+            $(this.serializeArray()).each(function(){  
+                serializeObj[this.name]=this.value;  
+            });  
+            return serializeObj;  
+        }
+
+        $('.deleteMovie').submit(function(){
+      
+            return confirm("确认要删除？")
+        })
+
+        $('.portfolio-link').click(function()
+        {
+            var id = $(this).find('input[name=id]').val()
+            
+            $.ajax({
+                type: 'get'
+                , url: '/info/'+id
+                , success: function (data) 
+                {
+                    $('#updateMovie').find('input[name=name]').val(data.title)
+                    $('#updateMovie').find('input[name=_id]').val(data._id)
+                    $('#updateMovie').find('input[name=code]').val(data.code)
+                    $('#updateMovie').find('input[name=cast]').val(data.cast)
+                    $('#updateMovie').find('input[name=size]').val(data.movieTime)
+                    $('#updateMovie').find('input[name=date]').val(data.date)
+                    $('#updateMovie').find('input[name=tag]').val(data.tags)
+                    $('#updateMovie').find('input[name=produce]').val(data.produce)
+                    $('#updateMovie').find('input[name=publisher]').val(data.publisher)
+
+                    $('.movie-images').html('')
+                    $('.movie-torrent').html('')
+                    
+                    if( data.seeds ){
+                        data.seeds.forEach(function(seed){
+                            console.log(seed)
+                            $('.movie-torrent').append('<tr><td>'+seed.title+'</td><td>'+(parseInt(seed.torrent_size)/1024/1024/1024).toFixed(2)+'GB</td><td>'+seed.category+'</td><td><a href="magnet:?xt=urn:btih:'+seed.torrent_hash+'">magnet:?xt=urn:btih:'+seed.torrent_hash+'</a></td></tr>')
+                        })
+                    }
+
+                    if(!data.images)
+                        return
+                    data.images.forEach(function(img){
+                        img = img.substring(0, img.lastIndexOf('-'))+'jp'+img.substring(img.lastIndexOf('-'),img.length)
+                        $('.movie-images').append('<img class="col-sm-4" src="'+img+'"></img>')
+                    })
+                }
+            })
+            
+            var img = ($(this).find('img').attr('src'))
+            var download = ($(this).find('.download').val())
+            $('#portfolioModal_image').attr('src', img)
+            $('#download').attr('href', download)
+        })
+        $('#updateMovie').submit(function(){
+            $.ajax({
+                type:'POST'
+                , url: '/updateMovie'
+                , data: $(this).serializeJson()
+                , success: function(){
+
+                }
+            })
+            return false
+        })
+        $('#search_btn').click(function(){
+            var value = $('#search').val()
+            window.location.href = '/search/' + value;
+        })
+    </script>
+
+</body>
+
+</html>
