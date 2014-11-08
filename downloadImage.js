@@ -43,7 +43,7 @@ function start(num, done)
     //     return start(++index)
     // return
     //image_exists:true date: { $gt: ' 2014-10-01' }
-    Movie.dbColl.find({  }).sort({date: -1}).limit(100).skip(num * 100).toArray(function(err, docs)
+    Movie.dbColl.find({ image_exists: { $ne: true } }).sort({date: -1}).limit(100).skip(num * 100).toArray(function(err, docs)
     // Movie.dbColl.find({ _id: {$in: list}}).sort({code: -1}).limit(30).skip(num * 30).toArray(function(err, docs)
     {
         if(!docs.length)
