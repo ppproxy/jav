@@ -1,0 +1,75 @@
+
+.ui-tabs-nav {
+    white-space:    nowrap;
+    background: #141414 
+}
+.ui-tabs-nav li a {
+    font-size: 13px;
+    color: #fff;
+
+}
+.ui-tabs-panel {
+}
+
+.tabs-panel{
+    position: absolute; 
+    top: 42px;
+    bottom: 0px;
+    left:0px;
+    right:0px;
+    padding:0px;
+}
+
+html{
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+}
+
+body{
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+}
+
+div{
+    margin:0px;
+    padding:0px;
+}
+
+.editor{
+    width: 99%;
+    height: 100%;
+}
+
+.panel{
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.menu{
+    height: 40px;
+    border: 1px solid #000;
+}
+
+.mypanel
+{
+    width: 1500px;
+    height:500px;
+    margin-left:150px;
+    margin-top: 100px;
+}
+
+.ui-layout-pane-west {
+    padding:    0;
+    overflow:   hidden;
+}
+.ui-layout-pane-center {
+    padding:    0;
+    overflow:   hidden;
+}
+.ui-layout-pane-north {
+    background: #fff;
+}
