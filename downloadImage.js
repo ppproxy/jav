@@ -116,19 +116,19 @@ function downloadFile(download_path, file_url, fileName, callback)
         }).on('end', function () {
             file.end();
 
-            setTimeout(function(){
+            // setTimeout(function(){
 
                 var stats = fs.statSync(download_path + name);
 
                 if( stats.size < 1000 ){
                     console.log('size-----', download_path + name)
                     console.log('size-----', file_url)
-                    fs.unlink(download_path + "\\" + name)
+                    fs.unlink(download_path + name)
                     return callback(1)
                 }
 
                 callback(null, name)
-            },10)
+            // },10)
             //console.log('download success');
         });
     });
