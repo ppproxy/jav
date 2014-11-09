@@ -85,7 +85,7 @@ router.get('/search/:search/:page', function(req, res)
 
 router.get('/download/:page', function(req, res)
 {
-	search({seeds : { $exists: true }}, req, res, { time })
+	search({seeds : { $exists: true }}, req, res)
 })
 
 router.get('/', function(req, res)
