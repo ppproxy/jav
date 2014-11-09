@@ -198,7 +198,7 @@ list.forEach(function(burl)
                             	if( !info )
                             		return done()
 
-                                Movie.findOne({ code: info.code, function(err, doc)
+                                Movie.findOne({ code: info.code }, function(err, doc)
                                 {
                                     if( !doc ){
                                         console.log('create', info.code, createCount++, burl)
@@ -211,7 +211,7 @@ list.forEach(function(burl)
                                     else{
                                         // if( info.provider === 'javzoo')
                                         //     return;
-                                        
+
                                     	console.log('update', info.code, updateCount++, burl)
                                     	Movie.updateById(doc._id, { images: info.images, provider: 'javzoo' }, function(){
 
