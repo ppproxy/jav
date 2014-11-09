@@ -156,7 +156,7 @@ for(var i =1;i<5000;i++)
     list.push('http://www.javzoo.com/cn/released/currentPage/'+i)
 }
 var task = []
-var map = {}
+var map = {}    
 var updateCount = 0
 var createCount = 0
 list.forEach(function(burl)
@@ -189,7 +189,7 @@ list.forEach(function(burl)
                         {
                             if( doc ){
                                 // console.log('------', burl)
-                                // return done()
+                                return done()
                             }
 
                             getPageInfo(url, function(info)
@@ -198,7 +198,7 @@ list.forEach(function(burl)
                             	if( !info )
                             		return done()
 
-                                Movie.findOne({ code: info.code, provider: { $ne: 'javzoo' } }, function(err, doc)
+                                Movie.findOne({ code: info.code, function(err, doc)
                                 {
                                     if( !doc ){
                                         console.log('create', info.code, createCount++, burl)
@@ -209,6 +209,9 @@ list.forEach(function(burl)
                                         })
                                     }
                                     else{
+                                        // if( info.provider === 'javzoo')
+                                        //     return;
+                                        
                                     	console.log('update', info.code, updateCount++, burl)
                                     	Movie.updateById(doc._id, { images: info.images, provider: 'javzoo' }, function(){
 

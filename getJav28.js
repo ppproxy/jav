@@ -30,7 +30,7 @@ function getHTML(url, callback)
         //callback(null);
         getHTML(url, callback);
     });
-    
+
     req.end();
 }
 
@@ -125,7 +125,7 @@ function getPageList(url, done)
 
 
 var list = []
-for(var i =1;i<100;i++)
+for(var i =1;i<10;i++)
 {
     list.push('http://www.jav28.com/cn/'+i)
 }
@@ -206,8 +206,9 @@ list.forEach(function(burl)
                     History.create({ url: burl }, function(){
                         done()
                     })
-                    console.log(burl, 'is done')
 
+                    console.log(burl, 'is done')
+                    process.exit(0)
                 })
                 // getPage('http://we.99btgc.com/p2p/06/14-05-31-20-04-47.html')
             })
@@ -219,20 +220,4 @@ console.log(task.length)
 async.series(task, function(){
     console.log('all is done')
 })
-async.series(task, function(){
-    console.log('all is done')
-})
-
-async.series(task, function(){
-    console.log('all is done')
-})
-
-async.series(task, function(){
-    console.log('all is done')
-})
-
-async.series(task, function(){
-    console.log('all is done')
-})
-
 // <a href="http://www.jav28.com/cn/movie/YTR-071" target="_blank"><img src="http://pics.dmm.co.jp/mono/movie/adult/h_127ytr071/h_127ytr071ps.jpg" class="img"></a>
