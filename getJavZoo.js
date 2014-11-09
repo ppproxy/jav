@@ -151,7 +151,7 @@ function getPageList(url, done)
 // })
 
 var list = []
-for(var i =1;i<100;i++)
+for(var i =1;i<5000;i++)
 {
     list.push('http://www.javzoo.com/cn/released/currentPage/'+i)
 }
