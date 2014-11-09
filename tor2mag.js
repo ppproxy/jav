@@ -49,7 +49,7 @@ function start(num, done)
                         }
                         if( list.length ){
                             console.log(list, count++)
-                            Movie.update({ _id: doc._id }, { seeds: list },function(){})
+                            Movie.update({ _id: doc._id }, { time: Date.now(), seeds: list },function(){})
                         }
                         else{
                             Movie.update({ _id: doc._id }, { no_seed: true },function(){})
