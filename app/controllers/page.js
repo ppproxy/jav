@@ -22,7 +22,7 @@ function search(query, req, res)
 
 		console.log(query)
 
-		Movie.dbColl.find(query).sort({ date: -1 }).limit(30).skip((page-1) * 30).toArray(function(err, docs)
+		Movie.dbColl.find(query).sort({ time: -1 }).limit(30).skip((page-1) * 30).toArray(function(err, docs)
 		{
 			console.log(err)
 			var bsize = 3
@@ -85,7 +85,7 @@ router.get('/search/:search/:page', function(req, res)
 
 router.get('/download/:page', function(req, res)
 {
-	search({seeds : { $exists: true }}, req, res)
+	search({seeds : { $exists: true }}, req, res, { time })
 })
 
 router.get('/', function(req, res)
