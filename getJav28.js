@@ -208,7 +208,7 @@ list.forEach(function(burl)
                     })
 
                     console.log(burl, 'is done')
-                    process.exit(0)
+                    //process.exit(0)
                 })
                 // getPage('http://we.99btgc.com/p2p/06/14-05-31-20-04-47.html')
             })
