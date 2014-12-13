@@ -213,7 +213,7 @@ list.forEach(function(burl)
                                         //     return;
 
                                     	console.log('update', info.code, updateCount++, burl)
-                                    	Movie.updateById(doc._id, { images: info.images, provider: 'javzoo' }, function(){
+                                    	Movie.updateById(doc._id, { images: info.images, provider: 'javzoo', poster: info.poster }, function(){
 
                                         })
                                     }

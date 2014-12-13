@@ -63,6 +63,7 @@ function search(query, req, res)
 			//     // console.log(doc)
 			// })
 			// return
+			console.log(err, docs)
 			res.render('page/page', { docs: docs, count: count/30, page: page, begin: begin, end: end, search: req.params.search })
 		})
 	})
@@ -71,6 +72,11 @@ function search(query, req, res)
 router.get('/download', function(req, res)
 {
 	search({seeds:{ $exists: true }}, req, res)
+})
+
+router.get('/like', function(req, res)
+{
+	search({ like: true }, req, res)
 })
 router.get('/:page', function(req, res)
 {
@@ -103,6 +109,17 @@ router.get('/info/:_id', function(req, res)
 	Movie.findById(req.params._id, function(err, doc)
 	{
 		res.json(doc)
+	})
+})
+
+router.post('/like/:_id', function(req, res)
+{
+	Movie.findById(req.params._id, function(err, doc)
+	{
+		Movie.updateById(req.params._id, { like: !doc.like }, function(err)
+		{
+			res.json({ like: !doc.like })
+		})
 	})
 })
 

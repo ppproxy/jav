@@ -119,6 +119,9 @@
                         <li>
                           <a href="/download/" >下载</a>
                         </li>
+                        <li>
+                          <a href="/like" >like</a>
+                        </li>
                         
                       </ul>
                     </li>
@@ -142,10 +145,18 @@
                             <!-- <form method="POST" class="deleteMovie" style="float:left;font-size:5px"  action="/deleteMovie/<%=doc._id%>">
                                 <input type="submit" value="delete"style="height:20px">
                             </form> -->
+                            <%if(doc.like){%>
+                                <a style="color:red" doc-id="<%=doc._id%>" class="like" href="javascript:void(0)"> {Like} </a>
+                           
+                            <%}else{%>
+                                <a style="color:#000" doc-id="<%=doc._id%>" class="like" href="javascript:void(0)"> {Like} </a>
+                            <%}%>
+
                             <%if(doc.seeds){%>
                                 <span style = "color:red"><%=doc.title%>#<span>
                             <%}else{%>
-                                <%=doc.title%>#
+                                <%=doc.title%>
+
                             <%}%>
 
                           </div>
@@ -363,6 +374,30 @@
             $('#portfolioModal_image').attr('src', img)
             $('#download').attr('href', download)
         })
+        
+        $('.like').click(function(e)
+        {
+            $.ajax({
+                type:'POST'
+                , url: '/like/'+ $(e.target).attr('doc-id')
+                , data: $(this).serializeJson()
+                , success: function(data)
+                {
+                    console.log(data)
+                    if(!data.like){
+                        $(e.target).attr('like', 'false')
+                        $(e.target).css('color', '#000')
+                    }
+                    else{
+                        $(e.target).attr('like', 'true')
+                        $(e.target).css('color', 'red')
+                    }
+                }
+            })
+
+            
+        })
+
         $('#updateMovie').submit(function(){
             $.ajax({
                 type:'POST'
