@@ -76,13 +76,13 @@ router.get('/download', function(req, res)
 
 router.get('/like', function(req, res)
 {
-	search({ like: true }, { time: -1 }, req, res)
+	search({ like: true }, { date: -1 }, req, res)
 })
 
 
 router.get('/like/:page', function(req, res)
 {
-	search({ like: true }, { time: -1 }, req, res)
+	search({ like: true }, { date: -1 }, req, res)
 })
 
 
