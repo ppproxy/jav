@@ -2,7 +2,7 @@ var express = require('express')
 	, router = express.Router()
 	, Movie = require('../../tools/mongodb/db.js').getTable('movie')
 
-function search(query, req, res)
+function search(query, sort, req, res)
 {
 	var page = (parseInt(req.params.page) || 1)
 
@@ -22,7 +22,7 @@ function search(query, req, res)
 
 		console.log(query)
 
-		Movie.dbColl.find(query).sort({ date: -1 }).limit(30).skip((page-1) * 30).toArray(function(err, docs)
+		Movie.dbColl.find(query).sort(sort).limit(30).skip((page-1) * 30).toArray(function(err, docs)
 		{
 			console.log(err)
 			var bsize = 3
@@ -71,37 +71,37 @@ function search(query, req, res)
 
 router.get('/download', function(req, res)
 {
-	search({seeds:{ $exists: true }}, req, res)
+	search({seeds:{ $exists: true }}, { time: -1 },req, res)
 })
 
 router.get('/like', function(req, res)
 {
-	search({ like: true }, req, res)
+	search({ like: true }, { time: -1 }, req, res)
 })
 router.get('/:page', function(req, res)
 {
-	search({  }, req, res)
+	search({  }, { date: -1 }, req, res)
 })
 
 router.get('/search/:search/:page', function(req, res)
 {
-	search({ $or: [{ title: RegExp(req.params.search)}, {code: RegExp(req.params.search) }, {cast: RegExp(req.params.search) }, {tags: RegExp(req.params.search) } ] }, req, res)
+	search({ $or: [{ title: RegExp(req.params.search)}, {code: RegExp(req.params.search) }, {cast: RegExp(req.params.search) }, {tags: RegExp(req.params.search) } ] },{ date: -1 }, req, res)
 })
 
 
 router.get('/download/:page', function(req, res)
 {
-	search({seeds : { $exists: true }}, req, res)
+	search({seeds : { $exists: true }},{ date: -1 }, req, res)
 })
 
 router.get('/', function(req, res)
 {
-	search({}, req, res)
+	search({}, { date: -1 },req, res)
 })
 
 router.get('/search/:search', function(req, res)
 {
-	search({ $or: [{ title: RegExp(req.params.search)}, {code: RegExp(req.params.search) }, {cast: RegExp(req.params.search) }, {tags: RegExp(req.params.search) } ] }, req, res)
+	search({ $or: [{ title: RegExp(req.params.search)}, {code: RegExp(req.params.search) }, {cast: RegExp(req.params.search) }, {tags: RegExp(req.params.search) } ] }, { date: -1 },req, res)
 })
 
 router.get('/info/:_id', function(req, res)
