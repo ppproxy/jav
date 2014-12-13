@@ -78,6 +78,14 @@ router.get('/like', function(req, res)
 {
 	search({ like: true }, { time: -1 }, req, res)
 })
+
+
+router.get('/like/:page', function(req, res)
+{
+	search({ like: true }, { time: -1 }, req, res)
+})
+
+
 router.get('/:page', function(req, res)
 {
 	search({  }, { date: -1 }, req, res)
@@ -91,7 +99,7 @@ router.get('/search/:search/:page', function(req, res)
 
 router.get('/download/:page', function(req, res)
 {
-	search({seeds : { $exists: true }},{ date: -1 }, req, res)
+	search({seeds : { $exists: true }},{ time: -1 }, req, res)
 })
 
 router.get('/', function(req, res)
